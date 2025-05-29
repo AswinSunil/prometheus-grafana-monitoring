@@ -3,12 +3,16 @@
 # === CONFIG ===
 IMAGE="ghcr.io/aswinsunil/nodejs-monitoring-app:latest"
 NAMESPACE="monitoring"
+CLUSTER_NAME="monitoring-cluster"
+
+echo "🛠 Creating KinD cluster (if not exists)..."
+kind create cluster --name $CLUSTER_NAME || echo "Cluster already exists"
 
 echo "✅ Pulling image from GitHub Container Registry..."
 docker pull $IMAGE
 
 echo "📦 Loading image into KinD cluster..."
-kind load docker-image $IMAGE
+kind load docker-image $IMAGE --name $CLUSTER_NAME
 
 echo "🚀 Applying Kubernetes manifests..."
 kubectl apply -f k8s/namespace.yaml
