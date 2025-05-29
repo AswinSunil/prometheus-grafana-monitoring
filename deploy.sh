@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # === CONFIG ===
-IMAGE="ghcr.io/YOUR_USERNAME/nodejs-monitoring-app:latest"
+IMAGE="ghcr.io/aswinsunil/nodejs-monitoring-app:latest"
 NAMESPACE="monitoring"
 
 echo "✅ Pulling image from GitHub Container Registry..."
